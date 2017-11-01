@@ -3,7 +3,7 @@ var APP_ID = undefined; // replace with "amzn1.echo-sdk-ams.app.[your-unique-val
 var CLIENT_ID     = '3MVG9M6Iz6p_Vt2wn4hwnXnRv.1XpOb._mn0cBUGMnOlcbInybYdbBu4XKxwwt8HTp8ixv0hHa0u28zp1hoHE';
 var CLIENT_SECRET = '4609070234326421070';
 var USERNAME      = 'salesforceoperations@paylinkdirect.com';
-var PASSWORD      = 'Paylink123!!!Yuj0CGcPrvzRwUJWprihJKOY';
+var PASSWORD      = 'Paylink321!!!tXLnJXCMDo0nDWr7CQ5ZjdFPD';
 var CALLBACK_URL  = 'http://localhost:3000j/oauth/_callback';
 var ENVIRONMENT   = 'sandbox';
 
@@ -12,6 +12,7 @@ var nforce     = require('nforce');
 var _          = require('lodash');
 var moment     = require('moment-timezone');
 var pluralize  = require('pluralize');
+var codeParser = require('./CodeParser');
 
 var Salesforce = function(){
   AlexaSkill.call(this, APP_ID);
@@ -63,7 +64,8 @@ function handleSearchAccountIntent(response){
     var speechOutput = "Sorry, There are no Accounts in your system.";
     if (results.records.length > 0) {
       var acc = results.records[0];
-      speechOutput = "I found an Account named: " + acc.get('Name');
+      speechOutput = "I found an Account named: " + acc.get('Name') + " " + codeParser.parseString('code parsing');
+      //speechOutput = "I found an Account named: " + acc.get('Name');
     }
     response.tellWithCard(speechOutput, "Salesforce", speechOutput);
   }).error(function(err) {
