@@ -1,0 +1,18 @@
+SearchAccountIntent to search for an account
+SearchAccountIntent to search for accounts
+ParseCodeIntent to create code for {If x is greater than y|codeString}
+ParseCodeIntent to create code for {For loop where x less than list size|codeString}
+ParseCodeIntent to create code for {if x dot field is not equal to y dot field|codeString}
+ParseCodeIntent to create code for {for loop where string x in list|codeString}
+ParseCodeIntent to write code for {If x is greater than y|codeString}
+ParseCodeIntent to write code for {For loop where x less than list size|codeString}
+ParseCodeIntent to write code for {if x dot field is not equal to y dot field|codeString}
+ParseCodeIntent to write code for {for loop where string x in list|codeString}
+ParseCodeIntent create code for {If x is greater than y|codeString}
+ParseCodeIntent create code for {For loop where x less than list size|codeString}
+ParseCodeIntent create code for {if x dot field is not equal to y dot field|codeString}
+ParseCodeIntent create code for {for loop where string x in list|codeString}
+ParseCodeIntent write code for {If x is greater than y|codeString}
+ParseCodeIntent write code for {For loop where x less than list size|codeString}
+ParseCodeIntent write code for {if x dot field is not equal to y dot field|codeString}
+ParseCodeIntent write code for {for loop where string x in list|codeString}

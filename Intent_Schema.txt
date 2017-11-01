@@ -1,0 +1,16 @@
+{
+  "intents": [
+    {
+      "intent": "SearchAccountIntent"
+    },
+    {
+      "slots": [
+        {
+          "name": "codeString",
+          "type": "LITERAL"
+        }
+      ],
+      "intent": "ParseCodeIntent"
+    }
+  ]
+}
