@@ -52,6 +52,9 @@ Salesforce.prototype.eventHandlers.onSessionEnded = function (sessionEndedReques
 Salesforce.prototype.intentHandlers = {
   SearchAccountIntent: function(intent, session, response){
     handleSearchAccountIntent(response);
+  },
+  ParseCodeIntent: function(intent, session, response){
+    handleParseCodeIntent(intent, session, response);
   }
 };
 
@@ -64,7 +67,7 @@ function handleSearchAccountIntent(response){
     var speechOutput = "Sorry, There are no Accounts in your system.";
     if (results.records.length > 0) {
       var acc = results.records[0];
-      speechOutput = "I found an Account named: " + acc.get('Name') + " " + codeParser.parseString('code parsing');
+      speechOutput = "I found an Account named: " + acc.get('Name');
       //speechOutput = "I found an Account named: " + acc.get('Name');
     }
     response.tellWithCard(speechOutput, "Salesforce", speechOutput);
@@ -74,6 +77,38 @@ function handleSearchAccountIntent(response){
   });
 }
 
+function handleParseCodeIntent(intent, session, response){
+  var speechOutput = codeParser.parseString(intent.slots.codeString.value);
+  response.tellWithCard(speechOutput, "Salesforce", speechOutput);
+}
+
+// Code for inserting records into salesforce
+/*
+// collect the company name and create the actual lead
+function handleLeadCompanyIntent(intent, session, response) {
+  var speechOutput = "Bingo! I created a new lead for  "
+    + session.attributes.name + " with the company name " + intent.slots.Company.value;
+  var names = session.attributes.name.split(' ');
+  var obj = nforce.createSObject('Lead');
+  obj.set('FirstName', names[0]);
+  obj.set('LastName', names[1]);
+  obj.set('Company', intent.slots.Company.value);
+
+  org.authenticate({ username: USERNAME, password: PASSWORD }).then(function(){
+    return org.insert({ sobject: obj })
+  }).then(function(results) {
+    if (results.success) {
+      response.tellWithCard(speechOutput, "Salesforce", speechOutput);
+    } else {
+      speechOutput = 'Darn, there was a salesforce problem, sorry.';
+      response.tellWithCard(speechOutput, "Salesforce", speechOutput);
+    }
+  }).error(function(err) {
+    var errorOutput = 'Darn, there was a Salesforce problem, sorry';
+    response.tell(errorOutput, "Salesforce", errorOutput);
+  });
+}
+*/
 
 // Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {
