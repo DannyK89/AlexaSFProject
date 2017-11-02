@@ -16,10 +16,10 @@ module.exports.parseString = function(stringSpoken) {
     codeSnipit = for_method(Spoken);
   }
   else if(Spoken.indexOf("while") > -1){
-    codeSnipit = "while(){}";
+    codeSnipit = while_method(Spoken);
   }
   else if(Spoken.indexOf("do") > -1){
-    codeSnipit = "do{}while()";
+    codeSnipit = do_method(Spoken);
   }
 
   return codeSnipit;
@@ -43,15 +43,54 @@ function if_method(spokenString){
 }
 
 function for_method(spokenString){
+  var stringArray = spokenString.split(" ");
+  var returnString = "for(";
 
+  for(var x = 1; x < stringArray.length; x++ ){
+    returnString += symbolParse(stringArray[x]);
+  }
+
+  returnString += "){}";
+
+  if(returnString.indexOf("!=") == -1){
+    returnString = returnString.replace("=", "==");
+  }
+
+  return returnString;
 }
 
 function while_method(spokenString){
+  var stringArray = spokenString.split(" ");
+  var returnString = "while(";
 
+  for(var x = 1; x < stringArray.length; x++ ){
+    returnString += symbolParse(stringArray[x]);
+  }
+
+  returnString += "){}";
+
+  if(returnString.indexOf("!=") == -1){
+    returnString = returnString.replace("=", "==");
+  }
+
+  return returnString;
 }
 
 function do_method(spokenString){
+  var stringArray = spokenString.split(" ");
+  var returnString = "do{}while()";
 
+  for(var x = 1; x < stringArray.length; x++ ){
+    returnString += symbolParse(stringArray[x]);
+  }
+
+  returnString += ")";
+
+  if(returnString.indexOf("!=") == -1){
+    returnString = returnString.replace("=", "==");
+  }
+
+  return returnString;
 }
 
 function symbolParse(symbol){
