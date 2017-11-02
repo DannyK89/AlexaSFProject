@@ -82,8 +82,8 @@ function handleParseCodeIntent(intent, session, response){
   var codeString = codeParser.parseString(intent.slots.codeString.value);
   response.tellWithCard(speechOutput, "Salesforce", speechOutput);
 
-  var obj = nforce.createSObject('Code_Snipit__c');
-  obj.set('Code__c', codeString);
+  var obj = nforce.createSObject('Code_Snipit');
+  obj.set('Code', codeString);
 
   org.authenticate({username: USERNAME, password: PASSWORD}).then(function(){
     return org.insert({sobject: obj})
