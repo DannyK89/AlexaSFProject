@@ -27,7 +27,17 @@ module.exports.parseString = function(stringSpoken) {
 
 function if_method(spokenString){
   var stringArray = spokenString.split(" ");
-  var returnString = "if(){}";
+  var returnString = "if(";
+
+  for(var x = 1; x < stringArray.length; x++ ){
+    returnString += symbolParse(stringArray[x]);
+  }
+
+  returnString += "){}";
+
+  if(returnString.indexOf("!=") == -1){
+    returnString = returnString.replace("=", "==");
+  }
 
   return returnString;
 }
@@ -46,18 +56,42 @@ function do_method(spokenString){
 
 function symbolParse(symbol){
   if(symbol == "greater"){
-    return ">"
+    return ">";
   }
   else if(symbol == "lesser"){
-    return "<"
+    return "<";
   }
   else if(symbol == "equal"){
-    return "="
+    return "=";
   }
   else if(symbol == "and"){
-    return "&&"
+    return "&&";
   }
   else if(symbol == "or"){
-    return "||"
+    return "||";
+  }
+  else if(symbol == "dot"){
+    return ".";
+  }
+  else if(symbol == "not"){
+    return "!";
+  }
+  else if(symbol == "in"){
+    return ":";
+  }
+  else if(symbol == "is"){
+    return "";
+  }
+  else if(symbol == "than"){
+    return "";
+  }
+  else if(symbol == "where"){
+    return "";
+  }
+  else if(symbol == "to"){
+    return "";
+  }
+  else{
+    return symbol;
   }
 }
