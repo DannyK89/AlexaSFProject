@@ -7,3 +7,4 @@ Nothing really speacial about the project.
 Just something I wanted to play around with.
 The parsing isn't that special.
 Looking for key words and turning them into programmic symbols.
+Then the system will take the programic statement and create a record in salesforce from it.
