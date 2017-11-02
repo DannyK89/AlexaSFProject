@@ -78,8 +78,26 @@ function handleSearchAccountIntent(response){
 }
 
 function handleParseCodeIntent(intent, session, response){
-  var speechOutput = codeParser.parseString(intent.slots.codeString.value);
+  var speechOutput = "The Code Snipit record was created successfully!";
+  var codeString = codeParser.parseString(intent.slots.codeString.value);
   response.tellWithCard(speechOutput, "Salesforce", speechOutput);
+
+  var obj = nforce.createSObject("Code_Snipit__c");
+  obj.set("Code__c", codeString);
+
+  org.authenticate({username: USERNAME, password: PASSWORD}).then(function(){
+    return org.insert({sobject: obj})
+  }).then(function(results){
+    if(results.success){
+      response.tellWithCard(speechOutput, "Salesforce", speechOutput);
+    } else{
+      speechOutput = "Darn, there was an issue with salesforce.";
+      response.tellWithCard(speechOutput, "Salesforce", speechOutput);
+    }
+  }).error(function(err){
+    var errorOutput = 'Darn, there was a Salesforce problem, sorry';
+    response.tell(errorOutput, "Salesforce", errorOutput);
+  });
 }
 
 // Code for inserting records into salesforce
