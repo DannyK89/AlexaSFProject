@@ -100,34 +100,6 @@ function handleParseCodeIntent(intent, session, response){
   });
 }
 
-// Code for inserting records into salesforce
-/*
-// collect the company name and create the actual lead
-function handleLeadCompanyIntent(intent, session, response) {
-  var speechOutput = "Bingo! I created a new lead for  "
-    + session.attributes.name + " with the company name " + intent.slots.Company.value;
-  var names = session.attributes.name.split(' ');
-  var obj = nforce.createSObject('Lead');
-  obj.set('FirstName', names[0]);
-  obj.set('LastName', names[1]);
-  obj.set('Company', intent.slots.Company.value);
-
-  org.authenticate({ username: USERNAME, password: PASSWORD }).then(function(){
-    return org.insert({ sobject: obj })
-  }).then(function(results) {
-    if (results.success) {
-      response.tellWithCard(speechOutput, "Salesforce", speechOutput);
-    } else {
-      speechOutput = 'Darn, there was a salesforce problem, sorry.';
-      response.tellWithCard(speechOutput, "Salesforce", speechOutput);
-    }
-  }).error(function(err) {
-    var errorOutput = 'Darn, there was a Salesforce problem, sorry';
-    response.tell(errorOutput, "Salesforce", errorOutput);
-  });
-}
-*/
-
 // Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {
     // Create an instance of the Salesforce skill.
