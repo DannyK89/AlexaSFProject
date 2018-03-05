@@ -1,9 +1,9 @@
 var APP_ID = undefined; // replace with "amzn1.echo-sdk-ams.app.[your-unique-value-here]";
 
-var CLIENT_ID     = '3MVG9M6Iz6p_Vt2wn4hwnXnRv.1XpOb._mn0cBUGMnOlcbInybYdbBu4XKxwwt8HTp8ixv0hHa0u28zp1hoHE';
-var CLIENT_SECRET = '4609070234326421070';
-var USERNAME      = 'salesforceoperations@paylinkdirect.com';
-var PASSWORD      = 'Paylink321!!!tXLnJXCMDo0nDWr7CQ5ZjdFPD';
+var CLIENT_ID     = 'XXX';
+var CLIENT_SECRET = 'XXX';
+var USERNAME      = 'XXXX';
+var PASSWORD      = 'XXX';
 var CALLBACK_URL  = 'http://localhost:3000j/oauth/_callback';
 var ENVIRONMENT   = 'sandbox';
 
